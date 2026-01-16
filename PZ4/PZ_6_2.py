@@ -8,8 +8,8 @@ A = [random.randint(1, 50) for _ in range(n)]
 print('Исходный список A:', A)
 
 B = []
-for k in range(3, n + 1, 3):  # k — порядковый номер (начиная с 3, шаг 3)
-    B.append(A[k - 1])        # индекс = номер - 1
+for k in range(3, n + 1, 3):
+    B.append(A[k - 1])       
 
 print('Размер списка B:', len(B))
 print('Содержимое списка B:', B)
