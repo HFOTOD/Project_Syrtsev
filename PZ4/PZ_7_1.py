@@ -5,7 +5,7 @@ try:
     S = input('Введите строку S: ')
     S0 = input('Введите строку S0: ')
 except ValueError:
-    print('Обнаружена ошибка ввода.')
+    print('Обнаружена ошибка ввода')
     exit()
 
 result = ""
