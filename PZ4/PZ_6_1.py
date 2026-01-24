@@ -7,8 +7,8 @@ A = [random.randint(1, 100) for _ in range(n)]
 
 print('Исходный список:', A)
 
-max_val = A[1]  # первый элемент с нечётным номером (номер 2 → индекс 1)
-for i in range(3, n + 1, 2):  # перебираем нечётные *номера*: 3, 5, 7...
+max_val = A[1]
+for i in range(3, n + 1, 2):
     if A[i - 1] > max_val:
         max_val = A[i - 1]
 
