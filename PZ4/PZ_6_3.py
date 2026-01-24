@@ -6,27 +6,38 @@ import math
 def dist(x1, y1, x2, y2):
     return math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
 
-n = int(input('Введите количество точек N (> 2): '))
-points = [(random.randint(-10, 10), random.randint(-10, 10)) for _ in range(n)]
+try:
+    n = int(input('Введите количество точек N (> 2): '))
+    if n <= 2:
+        print('Количество точек должно быть больше 2.')
+        n = 0
+except ValueError:
+    print('Ошибка: введено не число.')
+    n = 0
 
-print('Множество точек A:')
-for p in points:
-    print(p, end=' ')
-print()
+if n > 2:
+    points = [(random.randint(-10, 10), random.randint(-10, 10)) for _ in range(n)]
 
-min_perim = float('inf')
-tri = None
+    print('Множество точек A:')
+    for p in points:
+        print(p, end=' ')
+    print()
 
-for i in range(n):
-    for j in range(i + 1, n):
-        for k in range(j + 1, n):
-            x1, y1 = points[i]
-            x2, y2 = points[j]
-            x3, y3 = points[k]
-            perim = dist(x1, y1, x2, y2) + dist(x2, y2, x3, y3) + dist(x3, y3, x1, y1)
-            if perim < min_perim:
-                min_perim = perim
-                tri = (points[i], points[j], points[k])
+    min_perim = float('inf')
+    tri = None
 
-print('Наименьший периметр треугольника:', round(min_perim, 2))
-print('Точки треугольника (в порядке ввода):', tri)
+    for i in range(n):
+        for j in range(i + 1, n):
+            for k in range(j + 1, n):
+                x1, y1 = points[i]
+                x2, y2 = points[j]
+                x3, y3 = points[k]
+                perim = dist(x1, y1, x2, y2) + dist(x2, y2, x3, y3) + dist(x3, y3, x1, y1)
+                if perim < min_perim:
+                    min_perim = perim
+                    tri = (points[i], points[j], points[k])
+
+    print('Наименьший периметр треугольника:', round(min_perim, 2))
+    print('Точки треугольника (в порядке ввода):', tri)
+else:
+    print('Некорректный ввод количества точек.')
