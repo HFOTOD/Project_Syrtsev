@@ -7,7 +7,6 @@ while True:
         n = int(input('Введите размер списка: '))
         if n < 0:
             print('Пожалуйста, введите неотрицательное число.')
-            continue
         break
     except ValueError:
         print('Ошибка: пожалуйста, введите целое число.')
