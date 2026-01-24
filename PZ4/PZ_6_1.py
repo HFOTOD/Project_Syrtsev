@@ -2,14 +2,22 @@
 
 import random
 
-n = int(input('Введите размер списка: '))
+while True:
+    try:
+        n = int(input('Введите размер списка: '))
+        if n < 0:
+            print('Пожалуйста, введите неотрицательное число.')
+            continue
+        break
+    except ValueError:
+        print('Ошибка: пожалуйста, введите целое число.')
+
 A = [random.randint(1, 100) for _ in range(n)]
-
 print('Исходный список:', A)
+odd_index_elements = [A[i] for i in range(0, n, 2)]
 
-max_val = A[1]
-for i in range(3, n + 1, 2):
-    if A[i - 1] > max_val:
-        max_val = A[i - 1]
-
-print('Максимальный элемент с нечётным номером:', max_val)
+try:
+    max_val = max(odd_index_elements)
+    print('Максимальный элемент с нечётным номером:', max_val)
+except ValueError:
+    print('Нет элементов с нечетным номером для поиска.')
