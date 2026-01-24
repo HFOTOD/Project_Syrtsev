@@ -2,14 +2,24 @@
 
 import random
 
-n = int(input('Введите размер списка A (N < 15): '))
-A = [random.randint(1, 50) for _ in range(n)]
+try:
+    n = int(input('Введите размер списка A (N < 15): '))
+    if n >= 15:
+        print('Введенное число должно быть меньше 15.')
+        n = 0
+except ValueError:
+    print('Ошибка: введено не число.')
+    n = 0
 
-print('Исходный список A:', A)
+if n > 0:
+    A = [random.randint(1, 50) for _ in range(n)]
+    print('Исходный список A:', A)
 
-B = []
-for k in range(3, n + 1, 3):
-    B.append(A[k - 1])       
+    B = []
+    for k in range(3, n + 1, 3):
+        B.append(A[k - 1])
 
-print('Размер списка B:', len(B))
-print('Содержимое списка B:', B)
+    print('Размер списка B:', len(B))
+    print('Содержимое списка B:', B)
+else:
+    print('Не удалось сформировать список из-за неправильного ввода.')
