@@ -8,7 +8,6 @@ def count_steps_to_zero(n):
         steps += 1
     return steps
 
-# Ввод числа с проверкой
 number = input("Введите целое положительное число: ")
 while True:
     try:
