@@ -6,78 +6,22 @@
 #Определить в каких магазинах
 #можно приобрести книги Пушкина и Тютчева
 
-magistr = {'Лермонтов', 'Достоевский', 'Пушкин', 'Тютчев'}
-dom_knigi = {'Толстой', 'Грибоедов', 'Чехов', 'Пушкин'}
-bukmarket = {'Пушкин', 'Достоевский', 'Маяковский'}
-galereya = {'Чехов', 'Тютчев', 'Пушкин'}
-
-all_stores = {
-    'магистр': magistr,
-    'домкниги': dom_knigi,
-    'букмаркет': bukmarket,
-    'галерея': galereya
-}
-
-def find_stores_with_books(all_stores, books):
-    available_stores = []
-    for store, collection in all_stores.items():
-        if books.issubset(collection):
-            available_stores.append(store)
-    return available_stores
-
-books_to_find = {'Пушкин', 'Тютчев'}
-stores_with_books = find_stores_with_books(all_stores, books_to_find)
-
-print('Магазины в которых модно купить Пушкина и Тютчева:', stores_with_books)
-
-#Книжные магазины предлагают следующие коллекции книг.
-#Магистр – Лермонтов, Достоевский, Пушкин, Тютчев
-#ДомКниги – Толстой, Грибоедов, Чехов, Пушкин.
-#БукМаркет – Пушкин, Достоевский, Маяковский.
-#Галерея – Чехов, Тютчев, Пушкин.
-#Определить в каких магазинах
-#можно приобрести книги Пушкина и Тютчева
-
-shops_data = {
-    "Магистр": {"Лермонтов", "Достоевский", "Пушкин", "Тютчев"},
-    "ДомКниги": {"Толстой", "Грибоедов", "Чехов", "Пушкин"},
-    "БукМаркет": {"Пушкин", "Достоевский", "Маяковский"},
-    "Галерея": {"Чехов", "Тютчев", "Пушкин"}
-}
-
-
-shops_with_pushkin = {shop for shop, authors in shops_data.items() if "Пушкин" in authors}
-shops_with_tyutchev = {shop for shop, authors in shops_data.items() if "Тютчев" in authors}
-
-shops_with_both = shops_with_pushkin & shops_with_tyutchev
-
-print("Магазины, где можно приобрести книги Пушкина и Тютчева:", shops_with_both)
-
-
-
-#Книжные магазины предлагают следующие коллекции книг.
-#Магистр – Лермонтов, Достоевский, Пушкин, Тютчев
-#ДомКниги – Толстой, Грибоедов, Чехов, Пушкин.
-#БукМаркет – Пушкин, Достоевский, Маяковский.
-#Галерея – Чехов, Тютчев, Пушкин.
-#Определить в каких магазинах
-#можно приобрести книги Пушкина и Тютчева
 
 magistr = {'Лермонтов', 'Достоевский', 'Пушкин', 'Тютчев'}
-dom_knigi = {'Толстой', 'Грибоедов', 'Чехов', 'Пушкин'}
-bukmarket = {'Пушкин', 'Достоевский', 'Маяковский'}
+domknigi = {'Толстой', 'Грибоедов', 'Чехов', 'Пушкин'}
+bukmarket = {'Достоевский', 'Маяковский'}
 galereya = {'Чехов', 'Тютчев', 'Пушкин'}
 
-shops = {
-    'магистр': magistr,
-    'домкниги': dom_knigi,
-    'букмаркет': bukmarket,
-    'галерея': galereya
-}
+authors = {'Пушкин', 'Тютчев'}
 
-required = {'Пушкин', 'Тютчев'}
-result = [name for name, authors in shops.items() if required.issubset(authors)]
+if  authors & magistr:
+    print('Магистр')
 
-print('Можно приобрести книги Пушкина и Тютчева в след магазинах:')
-for shop in result:
-    print(f'{shop}')
+if  authors & domknigi:
+    print('ДоМкниги')
+
+if  authors & bukmarket:
+    print('БукМаркет')
+
+if  authors & galereya:
+    print('Галерея')
