@@ -13,5 +13,3 @@ def create_numbers_files():
             f_neg.write(str(num) + "\n")
           
       create_numbers_files()
-
-    
