@@ -11,4 +11,3 @@ del original_dict[0]
 del original_dict[6]
 
 print("Словарь после удаления первого и последнего элементов:", original_dict)
-print('ёввв')
