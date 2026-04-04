@@ -77,10 +77,3 @@ else:
 f2 = open('result2.txt', 'w')
 f2.writelines(lines)
 f2.close()
-
-#Создаёт Файл
-f = open('text18-28.txt', 'w', encoding='UTF-8')
-f.write('Первая строка\n')
-f.write('Вторая строка\n')
-f.write('Третья строка\n')
-f.close()
