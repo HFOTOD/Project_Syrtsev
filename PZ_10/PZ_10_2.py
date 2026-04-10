@@ -5,23 +5,30 @@ N = int(input('Введите номер строки N: '))
 
 symbols = 0
 
-for line in open('text18-28.txt', encoding='UTF-8'):
+f = open('text18-28.txt', encoding='utf-16')
+
+for line in f:
     print(line, end='')
     symbols += len(line)
 
+f.close()
+
 print('\nКоличество символов:', symbols)
 
-f1 = open('text18-28.txt', encoding='UTF-8')
+f1 = open('text18-28.txt', encoding='utf-16')
 lines = f1.readlines()
 f1.close()
 
 phrase = '*** Заменил ***\n'
-
-if N < len(lines):
-    lines.insert(N + 1, phrase)
+if N <= len(lines):
+    lines.insert(N, phrase)
 else:
     lines.append(phrase)
 
-f2 = open('result2.txt', 'w', encoding='UTF-8')
+f2 = open('result2.txt', 'w', encoding='utf-8')
 f2.writelines(lines)
 f2.close()
+
+print('\nИзменённый текст:\n')
+for line in lines:
+    print(line, end='')
