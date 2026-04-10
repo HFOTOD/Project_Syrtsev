@@ -1,9 +1,26 @@
-f1 = open('text18-1.txt', encoding='UTF-8')
-l = f1.readlines()
+# --- ЗАДАНИЕ 2 ---
+
+N = int(input('Введите номер строки N: '))
+
+symbols = 0
+
+for line in open('text18-28.txt', encoding='UTF-8'):
+    print(line, end='')
+    symbols += len(line)
+
+print('\nКоличество символов:', symbols)
+
+f1 = open('text18-28.txt', encoding='UTF-8')
+lines = f1.readlines()
 f1.close()
 
-l[0], l[3] = l[3], l[0]
+phrase = '*** ВСТАВЛЕННАЯ СТРОКА ***\n'
 
-f2 = open('text18-2.txt', 'w')
-f2.writelines(l)
+if N < len(lines):
+    lines.insert(N + 1, phrase)
+else:
+    lines.append(phrase)
+
+f2 = open('result2.txt', 'w', encoding='UTF-8')
+f2.writelines(lines)
 f2.close()
