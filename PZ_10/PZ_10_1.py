@@ -1,40 +1,63 @@
-d = 0
-t = 0
+# --- ЗАДАНИЕ 1 ---
 
-for i in open('text18-1.txt', encoding='UTF-8'):
-    print(i, end='')
-    t += 1
-    for j in i:
-        if j == 'ж':
-            d += 1
+l1 = ['-5 10 3 -8 7 2']
+l2 = ['4 -8 7 15 -5 20']
 
-print(end='\n')
-print('Количество строк:', t)
-print('Количество букв "ж":', d)
-
-
-d = 0
-t = 0
-
-for i in open('text18-1.txt', encoding='UTF-8'):
-    print(i, end='')
-    t += 1
-    for j in i:
-        if j == 'ж':
-            d += 1
-
-print('\nКоличество строк:', t)
-print('Количество букв "ж":', d)
-
-
-f1 = open('text18-1.txt', encoding='UTF-8')
-l = f1.readlines()
+f1 = open('file1.txt', 'w')
+f1.writelines(l1)
 f1.close()
 
-# Проверка количества строк
-if len(l) >= 4:
-    l[0], l[3] = l[3], l[0]
-
-f2 = open('text18-2.txt', 'w')
-f2.writelines(l)
+f2 = open('file2.txt', 'w')
+f2.writelines(l2)
 f2.close()
+
+f1 = open('file1.txt')
+a = f1.read().split()
+f1.close()
+
+f2 = open('file2.txt')
+b = f2.read().split()
+f2.close()
+
+for i in range(len(a)):
+    a[i] = int(a[i])
+
+for i in range(len(b)):
+    b[i] = int(b[i])
+
+avg1 = sum(a) / len(a)
+avg2 = sum(b) / len(b)
+
+odd1 = 0
+for x in a:
+    if x % 2 != 0:
+        odd1 += 1
+
+odd2 = 0
+for x in b:
+    if x % 2 != 0:
+        odd2 += 1
+
+common = []
+for x in a:
+    if x in b and x not in common:
+        common.append(x)
+
+
+f3 = open('result1.txt', 'w')
+
+f3.write('Элементы первого файла: ' + str(a) + '\n')
+f3.write('Элементы второго файла: ' + str(b) + '\n')
+
+f3.write('Среднее арифметическое:\n')
+f3.write('Первый файл: ' + str(avg1) + '\n')
+f3.write('Второй файл: ' + str(avg2) + '\n')
+
+f3.write('Количество нечетных:\n')
+f3.write('Первый файл: ' + str(odd1) + '\n')
+f3.write('Второй файл: ' + str(odd2) + '\n')
+
+f3.write('Общие элементы: ' + str(common) + '\n')
+f3.write('Количество общих элементов: ' + str(len(common)) + '\n')
+
+f3.close()
