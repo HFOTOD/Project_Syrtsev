@@ -1,39 +1,27 @@
 import random
 
-# 1. Автоматическая генерация матрицы
-rows = 4
-cols = 4
+# 1. Генерация матрицы
+rows, cols = 4, 4
 matrix = [[random.randint(1, 9) for _ in range(cols)] for _ in range(rows)]
 
 print("Исходная матрица:")
 for row in matrix:
     print(row)
 
+# 2. ЗАДАНИЕ 1: Замена последней строки на 0 (без enumerate)
+# Мы используем range(len(matrix)) вместо enumerate, чтобы узнать номер строки 'i'
+matrix = [[(0 if i == len(matrix) - 1 else matrix[i][j]) for j in range(cols)] for i in range(len(matrix))]
+
+# 3. ЗАДАНИЕ 2: Увеличение элементов столбца N в два раза (без enumerate)
 N = int(input(f"\nВведите номер столбца N (от 0 до {cols - 1}): "))
 
-# 2. ЗАДАНИЕ 1: Замена последней строки на 0 без enumerate
-# Используем индекс i для проверки, является ли строка последней
-matrix = [
-    ([0 for _ in range(cols)] if i == rows - 1 else [x for x in row])
-    for i, row in enumerate(matrix) # 'i' здесь по-прежнему удобно, но можно заменить на range(len(matrix))
-]
-
-# Если нужно убрать enumerate даже в первом случае:
-matrix = [
-    ([0 for _ in range(cols)] if i == len(matrix) - 1 else [matrix[i][j] for j in range(cols)])
-    for i in range(len(matrix))
-]
-
-# 3. ЗАДАНИЕ 2: Увеличение элементов столбца N в два раза без enumerate
-# Вместо перебора элементов через enumerate(row), используем range(len(row))
-matrix = [
-    [ (row[j] * 2 if j == N else row[j]) for j in range(len(row)) ]
-    for row in matrix
-]
+# Используем range(cols) для перебора индексов столбцов 'j' и обращаемся к элементам через row[j]
+matrix = [[(row[j] * 2 if j == N else row[j]) for j in range(cols)] for row in matrix]
 
 print("\nРезультирующая матрица:")
 for row in matrix:
     print(row)
+
 
 
 
