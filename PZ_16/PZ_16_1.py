@@ -52,3 +52,36 @@ print()
 cat = Cat("Кошка", 2, "Британская короткошерстная")
 print("Информация о кошке:")
 cat.show_info()
+==================================
+
+class Animal:
+    def __init__(self, species, age):
+        self.species = species
+        self.age = age
+
+
+class Dog(Animal):
+    def __init__(self, species, age, breed):
+        self.species = species
+        self.age = age
+        self.breed = breed
+
+
+class Cat(Animal):
+    def __init__(self, species, age, breed):
+        self.species = species
+        self.age = age
+        self.breed = breed
+
+
+dog = Dog("Собака", 5, "Овчарка")
+print("Вид:", dog.species)
+print("Возраст:", dog.age)
+print("Порода:", dog.breed)
+
+print()
+
+cat = Cat("Кошка", 2, "Британская")
+print("Вид:", cat.species)
+print("Возраст:", cat.age)
+print("Порода:", cat.breed)
