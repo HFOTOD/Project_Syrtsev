@@ -6,7 +6,6 @@ class Counter:
     """Класс 'Счетчик' с методами инкремента и декремента."""
     
     def __init__(self, start_value=0):
-        # Атрибут экземпляра для хранения текущего значения
         self.value = start_value
         
     def increment(self):
@@ -17,27 +16,21 @@ class Counter:
         """Метод для декремента (уменьшения) значения."""
         self.value -= 1
 
-
-# --- Проверка работы кода (согласно Раздаточным материалам №92-94) ---
-# Создаем экземпляр класса
 my_counter = Counter(10)
 
-# Вызываем методы
 my_counter.increment()
-print("Значение после инкремента:", my_counter.value)  # Выведет: 11
+print("Значение после инкремента:", my_counter.value)
 
 my_counter.decrement()
 my_counter.decrement()
-print("Значение после двух декрементов:", my_counter.value)  # Выведет: 9
+print("Значение после двух декрементов:", my_counter.value)
 
-
-
+=================================================
 
 class Animal:
     """Базовый класс 'Животное'."""
     
     def __init__(self, animal_type, age):
-        # Атрибуты базового класса: вид и возраст
         self.animal_type = animal_type
         self.age = age
 
@@ -46,9 +39,7 @@ class Dog(Animal):
     """Подкласс 'Собака', наследуемый от 'Животное'."""
     
     def __init__(self, animal_type, age, breed):
-        # Вызываем конструктор базового класса для инициализации вида и возраста
         super().__init__(animal_type, age)
-        # Добавляем собственный атрибут подкласса — породу
         self.breed = breed
 
 
@@ -56,14 +47,9 @@ class Cat(Animal):
     """Подкласс 'Кошка', наследуемый от 'Животное'."""
     
     def __init__(self, animal_type, age, breed):
-        # Вызываем конструктор базового класса
         super().__init__(animal_type, age)
-        # Добавляем собственный атрибут подкласса — породу
         self.breed = breed
 
-
-# --- Проверка работы кода (согласно Раздаточным материалам №92-94) ---
-# Создаем экземпляры подклассов
 dog_instance = Dog("Собака", 3, "Лабрадор")
 cat_instance = Cat("Кошка", 2, "Сиамская")
 
