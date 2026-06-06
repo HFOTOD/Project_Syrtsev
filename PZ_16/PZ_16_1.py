@@ -2,90 +2,71 @@
 #Создайте класс "Животное", который содержит информацию о виде и возрасте животного. 
 #Создайте классы "Собака" и "Кошка", которые наследуются от класса "Животное" и содержат информацию о породе.
 
-class Animal:
-    """Класс Животное."""
-
-    def __init__(self, species, age):
-        self.species = species
-        self.age = age
-
-    def show_info(self):
-        """Вывод информации о животном."""
-        print(f"Вид: {self.species}")
-        print(f"Возраст: {self.age}")
-
-
-class Dog(Animal):
-    """Класс Собака."""
-
-    def __init__(self, species, age, breed):
-        super().__init__(species, age)
-        self.breed = breed
-
-    def show_info(self):
-        """Вывод информации о собаке."""
-        super().show_info()
-        print(f"Порода: {self.breed}")
+class Counter:
+    """Класс 'Счетчик' с методами инкремента и декремента."""
+    
+    def __init__(self, start_value=0):
+        # Атрибут экземпляра для хранения текущего значения
+        self.value = start_value
+        
+    def increment(self):
+        """Метод для инкремента (увеличения) значения."""
+        self.value += 1
+        
+    def decrement(self):
+        """Метод для декремента (уменьшения) значения."""
+        self.value -= 1
 
 
-class Cat(Animal):
-    """Класс Кошка."""
+# --- Проверка работы кода (согласно Раздаточным материалам №92-94) ---
+# Создаем экземпляр класса
+my_counter = Counter(10)
 
-    def __init__(self, species, age, breed):
-        super().__init__(species, age)
-        self.breed = breed
+# Вызываем методы
+my_counter.increment()
+print("Значение после инкремента:", my_counter.value)  # Выведет: 11
 
-    def show_info(self):
-        """Вывод информации о кошке."""
-        super().show_info()
-        print(f"Порода: {self.breed}")
+my_counter.decrement()
+my_counter.decrement()
+print("Значение после двух декрементов:", my_counter.value)  # Выведет: 9
 
 
-animal = Animal("Животное", 3)
-print("Информация о животном:")
-animal.show_info()
 
-print()
-
-dog = Dog("Собака", 5, "Немецкая овчарка")
-print("Информация о собаке:")
-dog.show_info()
-
-print()
-
-cat = Cat("Кошка", 2, "Британская короткошерстная")
-print("Информация о кошке:")
-cat.show_info()
-==================================
 
 class Animal:
-    def __init__(self, species, age):
-        self.species = species
+    """Базовый класс 'Животное'."""
+    
+    def __init__(self, animal_type, age):
+        # Атрибуты базового класса: вид и возраст
+        self.animal_type = animal_type
         self.age = age
 
 
 class Dog(Animal):
-    def __init__(self, species, age, breed):
-        self.species = species
-        self.age = age
+    """Подкласс 'Собака', наследуемый от 'Животное'."""
+    
+    def __init__(self, animal_type, age, breed):
+        # Вызываем конструктор базового класса для инициализации вида и возраста
+        super().__init__(animal_type, age)
+        # Добавляем собственный атрибут подкласса — породу
         self.breed = breed
 
 
 class Cat(Animal):
-    def __init__(self, species, age, breed):
-        self.species = species
-        self.age = age
+    """Подкласс 'Кошка', наследуемый от 'Животное'."""
+    
+    def __init__(self, animal_type, age, breed):
+        # Вызываем конструктор базового класса
+        super().__init__(animal_type, age)
+        # Добавляем собственный атрибут подкласса — породу
         self.breed = breed
 
 
-dog = Dog("Собака", 5, "Овчарка")
-print("Вид:", dog.species)
-print("Возраст:", dog.age)
-print("Порода:", dog.breed)
+# --- Проверка работы кода (согласно Раздаточным материалам №92-94) ---
+# Создаем экземпляры подклассов
+dog_instance = Dog("Собака", 3, "Лабрадор")
+cat_instance = Cat("Кошка", 2, "Сиамская")
 
-print()
-
-cat = Cat("Кошка", 2, "Британская")
-print("Вид:", cat.species)
-print("Возраст:", cat.age)
-print("Порода:", cat.breed)
+# Обращение к атрибутам базового класса и подклассов
+print(f"Объект 1: Вид - {dog_instance.animal_type}, Возраст - {dog_instance.age}, Порода - {dog_instance.breed}")
+print(f"Объект 2: Вид - {cat_instance.animal_type}, Возраст - {cat_instance.age}, Порода - {cat_instance.breed}")
