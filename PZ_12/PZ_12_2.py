@@ -1,9 +1,8 @@
 import random
 
 # 1. Автоматическая генерация матрицы (задаем сами)
-# Используем вложенное списковое включение (из Раздаточного материала №123)
-rows = 4  # количество строк
-cols = 4  # количество столбцов
+rows = 4
+cols = 4
 
 matrix = [[random.randint(1, 9) for _ in range(cols)] for _ in range(rows)]
 
@@ -13,14 +12,12 @@ print(*matrix, sep="\n")
 N = int(input(f"\nВведите номер столбца N (от 0 до {cols - 1}): "))
 
 # 2. ЗАДАНИЕ 1: Замена последней строки на 0
-# В случае else обязательно создаем новую копию строки: [x for x in row]
 matrix = [
     ([0 for _ in row] if i == len(matrix) - 1 else [x for x in row])
     for i, row in enumerate(matrix)
 ]
 
 # 3. ЗАДАНИЕ 2: Увеличение элементов столбца N в два раза
-# Твоя связка map() и lambda написана отлично и теперь работает корректно!
 matrix = list(map(
     lambda row: [
         (x * 2 if j == N else x)
