@@ -53,6 +53,5 @@ class Cat(Animal):
 dog_instance = Dog("Собака", 3, "Лабрадор")
 cat_instance = Cat("Кошка", 2, "Сиамская")
 
-# Обращение к атрибутам базового класса и подклассов
 print(f"Объект 1: Вид - {dog_instance.animal_type}, Возраст - {dog_instance.age}, Порода - {dog_instance.breed}")
 print(f"Объект 2: Вид - {cat_instance.animal_type}, Возраст - {cat_instance.age}, Порода - {cat_instance.breed}")
